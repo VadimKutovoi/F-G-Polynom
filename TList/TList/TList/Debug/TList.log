@@ -1,0 +1,5 @@
+﻿  Source.cpp
+c:\users\kutovoj.v\documents\github\tlist-master\include\tlist.h(238): warning C4715: 'operator>': not all control paths return a value
+c:\users\kutovoj.v\documents\github\tlist-master\include\tlist.h(215): warning C4715: 'operator<': not all control paths return a value
+  TList.vcxproj -> C:\Users\kutovoj.v\Documents\GitHub\TList-master\TList\Debug\TList.exe
+  TList.vcxproj -> C:\Users\kutovoj.v\Documents\GitHub\TList-master\TList\Debug\TList.pdb (Full PDB)

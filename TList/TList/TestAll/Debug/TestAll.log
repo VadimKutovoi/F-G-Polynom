@@ -1,0 +1,6 @@
+﻿  test_main.cpp
+  test_list.cpp
+  Generating Code...
+test_list.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  TestAll.vcxproj -> C:\Users\kutovoj.v\Documents\GitHub\TList-master\TList\Debug\TestAll.exe
+  TestAll.vcxproj -> C:\Users\kutovoj.v\Documents\GitHub\TList-master\TList\Debug\TestAll.pdb (Full PDB)

@@ -1,0 +1,4 @@
+﻿  MyForm.cpp
+c:\users\sirku\desktop\gitprojects\polynom\tlist\include\tpolynom.h(267): warning C4715: 'TPolynom::operator=': not all control paths return a value
+  GUI.vcxproj -> C:\Users\sirku\Desktop\GitProjects\Polynom\TList\TList\Debug\GUI.exe
+  GUI.vcxproj -> C:\Users\sirku\Desktop\GitProjects\Polynom\TList\TList\Debug\GUI.pdb (Full PDB)
