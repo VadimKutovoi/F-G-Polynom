@@ -317,6 +317,26 @@ public:
 		return pCurr->pNext == pStop;
 	}
 
+	void magic()
+	{
+		TLink<TMonom> *tmp;
+	
+		reset();
+
+		if ((pCurr->pNext != pStop)) {
+			tmp = pCurr->pNext;
+			while (tmp->pNext != NULL)
+			{
+				if (pCurr->val.EqualDegrees(tmp->val)) {
+					tmp->val.coeff += pCurr->val.coeff;
+					delCurr();
+					break;
+				}
+				tmp = tmp->pNext;
+			}
+		}			
+	}
+
 	friend ostream& operator<<(ostream& os, TPolynom &p)
 	{
 		if (p.size==0) 

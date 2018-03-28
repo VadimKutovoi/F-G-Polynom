@@ -95,7 +95,8 @@ public:
 	
 	T getElem()
 	{ 
-		return pCurr->val; 
+		if(pCurr != 0)
+			return pCurr->val;
 	}
 	
 	void delFirst ()

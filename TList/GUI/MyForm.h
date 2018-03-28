@@ -307,6 +307,7 @@ namespace GUI {
 			this->minus->TabIndex = 20;
 			this->minus->Text = L"-";
 			this->minus->UseVisualStyleBackColor = false;
+			this->minus->Click += gcnew System::EventHandler(this, &MyForm::minus_Click);
 			// 
 			// Clear
 			// 
@@ -418,13 +419,16 @@ namespace GUI {
 
 		Polynom1->Text = "";
 
+
 		for (poly1.reset(); !poly1.isEnd(); poly1.goNext())
 		{	
-			Polynom1->Text += poly1.getElem().coeff 
-				+ "*x^" + poly1.getElem().x 
-				+ "*y^" + poly1.getElem().y 
-				+ "*z^" + poly1.getElem().z;	
-			if (!poly1.isLast()) Polynom1->Text += "+";
+			if (poly1.getElem().coeff != 0) {
+				Polynom1->Text += poly1.getElem().coeff
+					+ "*x^" + poly1.getElem().x
+					+ "*y^" + poly1.getElem().y
+					+ "*z^" + poly1.getElem().z;
+				if (!poly1.isLast()) Polynom1->Text += "+";
+			}
 			
 		}
 	}
@@ -438,51 +442,88 @@ namespace GUI {
 
 		Polynom2->Text = "";
 
+		
+
 		for (poly2.reset(); !poly2.isEnd(); poly2.goNext())
 		{
-			Polynom2->Text += poly2.getElem().coeff 
-				+ "*x^" + poly2.getElem().x 
-				+ "*y^" + poly2.getElem().y 
-				+ "*z^" + poly2.getElem().z;
-			if (!poly2.isLast()) Polynom2->Text += "+";
+			if (poly2.getElem().coeff != 0) {
+				Polynom2->Text += poly2.getElem().coeff
+					+ "*x^" + poly2.getElem().x
+					+ "*y^" + poly2.getElem().y
+					+ "*z^" + poly2.getElem().z;
+				if (!poly2.isLast()) Polynom2->Text += "+";
+			}
 		}
 }
 	private: System::Void plus_Click(System::Object^  sender, System::EventArgs^  e) {
 		res = poly1 + poly2;
 
-		for (res.reset();!res.isEnd(); res.goNext())
-		{
-			result->Text += res.getElem().coeff 
-				+ "*x^" + res.getElem().x 
-				+ "*y^" + res.getElem().y 
-				+ "*z^" + res.getElem().z;
-			if (!res.isLast()) result->Text += "+";
+		res.magic();
+
+		if (!res.isEmpty()) {
+			for (res.reset();!res.isEnd(); res.goNext())
+			{
+				if (res.getElem().coeff != 0) {
+					result->Text += res.getElem().coeff
+						+ "*x^" + res.getElem().x
+						+ "*y^" + res.getElem().y
+						+ "*z^" + res.getElem().z;
+					if (!res.isLast()) result->Text += "+";
+				}
+			}
 		}
+		else result->Text = "0";
 }
 	private: System::Void multonconst_Click(System::Object^  sender, System::EventArgs^  e) {
 		res = poly1 * Convert::ToInt32(c->Text);
 
-
-		for (res.reset(); !res.isEnd(); res.goNext())
-		{
-			result->Text += res.getElem().coeff
-				+ "*x^" + res.getElem().x 
-				+ "*y^" + res.getElem().y 
-				+ "*z^" + res.getElem().z;
-			if (!res.isLast()) result->Text += "+";
+		if (!res.isEmpty()) {
+			for (res.reset(); !res.isEnd(); res.goNext())
+			{
+				if (res.getElem().coeff != 0) {
+					result->Text += res.getElem().coeff
+						+ "*x^" + res.getElem().x
+						+ "*y^" + res.getElem().y
+						+ "*z^" + res.getElem().z;
+					if (!res.isLast()) result->Text += "+";
+				}
+			}
 		}
+		else result->Text = "0";
 	}
 	private: System::Void multonmonom_Click(System::Object^  sender, System::EventArgs^  e) {	
 		res = poly1 * poly2;
 
-		for (res.reset(); !res.isEnd(); res.goNext())
+		if (!res.isEmpty()) {
+			for (res.reset(); !res.isEnd(); res.goNext())
+			{
+				if (res.getElem().coeff != 0) {
+					result->Text += res.getElem().coeff
+						+ "*x^" + res.getElem().x
+						+ "*y^" + res.getElem().y
+						+ "*z^" + res.getElem().z;
+					if (!res.isLast()) result->Text += "+";
+				}
+			}
+		}
+		else result->Text = "0";
+	}
+private: System::Void minus_Click(System::Object^  sender, System::EventArgs^  e) {
+	res = poly1 - poly2;
+
+	if (!res.isEmpty()) {
+		for (res.reset();!res.isEnd(); res.goNext())
 		{
-			result->Text += res.getElem().coeff 
-				+ "*x^" + res.getElem().x + "*y^" 
-				+ res.getElem().y + "*z^" 
-				+ res.getElem().z;
-			if (!res.isLast()) result->Text += "+";
+			if (res.getElem().coeff != 0) {
+				result->Text += res.getElem().coeff
+					+ "*x^" + res.getElem().x
+					+ "*y^" + res.getElem().y
+					+ "*z^" + res.getElem().z;
+				if (!res.isLast()) result->Text += "+";
+			}
 		}
 	}
+	else result->Text = "0";
+}
 };
 }
